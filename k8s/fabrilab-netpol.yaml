@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-traefik-to-curbsider
+  namespace: curbsider
+spec:
+  podSelector: {} # An empty podSelector selects all pods in the namespace
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system # Allow from the kube-system namespace
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: traefik # Specifically from the Traefik pods
+    ports:
+    - protocol: TCP
+      port: 80 # Port for the curbsider frontend
+  - from:
+    - podSelector: {} # Allow traffic from any pod within the curbsider namespace

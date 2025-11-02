@@ -1,0 +1,385 @@
+:root {
+  --bg: #030303;
+  --fg: #ffffff;
+  --muted: rgba(255, 255, 255, 0.6);
+  --accent: #ffffff;
+  --card: rgba(5, 5, 5, 0.6);
+  --radius: 16px;
+  --max-width: 1180px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Margins and padding are handled by Tailwind base styles */
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* floating pill header, inverted (dark) */
+.fl-header {
+  position: fixed;
+  top: 14px;
+  width: 100%;
+  z-index: 50;
+  pointer-events: none; /* so video hero still scrolls, inner shell gets events */
+}
+
+.fl-header-shell {
+  pointer-events: auto;
+  max-width: 1180px;
+  margin: 0 auto;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 2rem;
+  background: radial-gradient(circle, rgba(3, 3, 3, 0.82), rgba(0, 0, 0, 0.4));
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* brand */
+.fl-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  min-width: 170px;
+}
+
+.fl-logo {
+  height: 35px;
+  width: auto;
+  display: block;
+}
+
+.fl-name {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+/* actions on the right */
+.fl-header-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.fl-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fl-cta {
+  background: #fff;
+  color: #020617;
+  border: none;
+  border-radius: 12px;
+  padding: 0.45rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.12s ease-out;
+}
+
+.fl-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Hero */
+.fl-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fl-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.fl-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(3, 3, 3, 0.4);
+  z-index: 0;
+}
+
+.fl-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 1rem;
+  margin-top: 120px; /* header is now 100px tall + some buffer */
+}
+
+.fl-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.fl-hero-content p {
+  font-size: 1.25rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.fl-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.fl-primary-btn {
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.fl-primary-btn:hover {
+  background: var(--muted);
+  color: var(--bg);
+}
+
+.fl-secondary-link {
+  color: var(--fg);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: 1px solid var(--fg);
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.fl-secondary-link:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* Sections */
+.fl-section {
+  padding: 5rem 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.fl-section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.fl-section-heading h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.fl-section-heading p {
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+/* About */
+.fl-about-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.fl-about-body p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.fl-about-list h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.fl-about-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.fl-about-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Projects */
+.fl-project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.fl-project-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fl-project-meta {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fl-project-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.fl-project-card p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.fl-project-link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.fl-project-link:hover {
+  color: var(--fg);
+}
+
+/* Contact */
+.fl-contact {
+  background: var(--card);
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.fl-contact-content {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.fl-contact-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.fl-contact-content p {
+  font-size: 1.25rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.fl-contact-actions {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.fl-contact-alt {
+  color: var(--muted);
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .fl-header-shell {
+    height: 80px;
+    gap: 0.75rem;
+  }
+
+  .fl-header-actions {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .fl-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .fl-hero-content p {
+    font-size: 1rem;
+  }
+
+  .fl-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fl-section {
+    padding: 3rem 1rem;
+  }
+
+  .fl-section-heading h2 {
+    font-size: 2rem;
+  }
+
+  .fl-about-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .fl-contact-content h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: curbsider
+  namespace: curbsider
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: curbsider.com.au
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: curbsider
+            port:
+              number: 80
