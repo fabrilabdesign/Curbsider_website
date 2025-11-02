@@ -1,6 +1,13 @@
 import React from 'react'
 
 const Hero: React.FC = () => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section id="hero" className="fl-hero">
       <img
@@ -15,9 +22,9 @@ const Hero: React.FC = () => {
           We're building a new category of smart parcel delivery hardware for Australian homes — designed to look good on the street and actually stop parcel theft.
         </p>
         <div className="fl-hero-actions">
-          <a href="mailto:james@curbsider.com.au" className="fl-primary-btn">
+          <button className="fl-primary-btn" onClick={() => scrollTo('contact')}>
             Investors: Request our deck
-          </a>
+          </button>
           <a href="#about" className="fl-secondary-link">
             Learn more
           </a>
