@@ -25,9 +25,9 @@ const Hero: React.FC = () => {
           <button className="fl-primary-btn" onClick={() => scrollTo('contact')}>
             Investors: Request our deck
           </button>
-          <a href="#about" className="fl-secondary-link">
+          <button className="fl-secondary-link" onClick={() => scrollTo('problem')}>
             Learn more
-          </a>
+          </button>
         </div>
       </div>
     </section>
